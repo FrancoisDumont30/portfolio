@@ -14,118 +14,149 @@
 			<div id="wrapper" class="fade-in">
 
 				<!-- Intro -->
-					<div id="intro">
-						<h1>Portfolio</h1>
-						<h2>François Dumont</h2>
-						<p>Data - ML - AI</p>
-					</div>
+				<div id="intro">
+					<h1>Portfolio</h1>
+					<h2>François Dumont</h2>
+					<p>Data - ML - AI</p>
+				</div>
 
 				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">Projects</a></li>
-							<li><a href="formation.html">Education</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/françoisdumont" class="icon brands fa-linkedin"><span class="label">Facebook</span></a></li>
-							<li><a href="https://github.com/FrancoisDumont30" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+				<nav id="nav">
+					<ul class="links">
+						<li class="active"><a href="index.html">Projects</a></li>
+						<li><a href="formation.html">Education</a></li>
+					</ul>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/françoisdumont" class="icon brands fa-linkedin"><span class="label">Facebook</span></a></li>
+						<li><a href="https://github.com/FrancoisDumont30" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					</ul>
+				</nav>
 
 				<!-- Main -->
-					<div id="main">
-					
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2><a>Chess games project<br/></a></h2>
-									<a href="#" ><img src="images/chess_small.png" alt="" /></a>
-									<a><img src="images/skills_bar.png" width="594" height="129"/></a>
-									<br/>
-									<p>For my main portfolio project, 
-										<br/> I engineered a data pipeline to extract chess game data from the Chess.com API.
-										<br/> The data is stored both locally and in a Neon database, 
-										<br/> showcasing my ability to design scalable workflows and manage data efficiently.
-										
-									</p>
-									
-								</header>
+				<div id="main">
+					<!-- Featured Post -->
+					<article class="post featured">
+						<header class="major">
+							<h2><a>Crypto Trading Data Pipeline<br/></a></h2>
+							<a href="#" ><img src="images/crypto.png" alt="" /></a>
+							<div class="bandeau-logos">
+								<img src="images/logo/docker.png" alt="">
+								<img src="images/logo/AirflowLogo.png" alt="">
+								<img src="images/logo/postgresql.png" alt="">
+								<img src="images/logo/fastapi.png" alt="">
+								<img src="images/logo/git.png" alt="">
+							</div>
+
+							<!-- <a><img src="images/skills_bar.png" width="594" height="129"/></a> -->
+							<br/>
+							<p>
+							<b>Crypto Trading Data Pipeline </b> is a Dockerized data engineering project <br/> that collects and serves market data for cryptocurrencies. 
+							<br/>Apache Airflow 3.4 orchestrates two pipelines: 
+							a per-minute collector and a daily incremental collector.
+							<br/> Recent data is stored in PostgreSQL, while the long-term history lives in partitioned Parquet files. 
+							<br/>Pipelines include automatic retries, deduplication, and dynamic task mapping (one task per trading pair). 
+							<br/>A FastAPI service exposes candles and the latest price per coin.
+							</p>
+							
+						</header>
+						
+						<ul class="actions special">
+							<li><a href="https://github.com/FrancoisDumont30/crypto_data" class="button large">GitHub</a></li>
+						</ul>
+					</article>
+
+
+					<!-- Featured Post -->
+					<article class="post featured">
+						<header class="major">
+							<h2><a>Chess games project<br/></a></h2>
+							<a href="#" ><img src="images/chess_small.png" alt="" /></a>
+							<a><img src="images/skills_bar.png" width="594" height="129"/></a>
+							<br/>
+							<p> This <b>chess data project</b> extracts, loads, and transforms data from my Chess.com games 
+								<br/>to showcase my data engineering skills using free tools: 
+								<br/>Apache Airflow, Databricks Community Edition (working around its constraints), and dbt.
+								<br/>Rather than building an over-engineered, production-grade pipeline, <br/>my focus is on clear code, sound architecture choices, and practical problem-solving. 
+								<br/>To highlight versatility across stacks, <br/>I implement the core transformations in both Databricks (Apache Spark) and dbt (PostgreSQL).
+							</p>
+							
+						</header>
+						
+						<ul class="actions special">
+							<li><a href="https://github.com/FrancoisDumont30/chess_games_project" class="button large">GitHub</a></li>
+						</ul>
+					</article>
+
+					<!-- Posts -->
+					<section class="posts">
+						<article>
+							<header>
+								<h2><a href="#">New York city Motor Vehicle Collisions Analysis<br /></a></h2>
+							</header>
+							<a href="#" class="image fit"><img src="images/ny.jpg" alt="" /></a>
+							<code>Pandas, Matplotlib, Seaborn, Folium </code><br/><br/>
+							<p>This is my first BI project. <br> Many choices in this project are debatable. <br> This was primarily a coding exercise. <br> I used a dataset on New York accidents to build my first "real" ETL job. <br> It was also my first experience handling NaN values, <br> where I attempted to recover missing New York county data using geographic coordinates, street names, and intersections.</p>
+																<br/>
+							<ul class="actions special">
+								<li><a href="https://github.com/FrancoisDumont30/NY_Collision" class="button">Github</a></li>
+							</ul>
+						</article>
+
+						<article>
+							<header>
+								<h2><a href="#">Exhaustive RAG<br /></a></h2>
 								
-								<ul class="actions special">
-									<li><a href="https://github.com/FrancoisDumont30/chess_games_project" class="button large">GitHub</a></li>
-								</ul>
-							</article>
+							</header>
+							<a href="#" class="image fit"><img src="images/robot_reading.jpg"  alt=""/></a>
+							<code>Mistral LLM : Structured output, OCR, Prompting
+								<br/>Llama Index : Metadata, Reranking, Vector Storage</code><br/><br/>
+							<p>I built a comprehensive RAG system for construction contractual documents, optimizing retrieval through chapter-based chunking and metadata enhancement. <br />I also wrote an article explaining the challenges and the overall concept of my project.</p>
+							
+							<br/>
+							<ul class="actions special">
+								<li><a href="#" class="button">Github</a></li>
+							</ul>
+						</article>
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<h2><a href="#">New York city Motor Vehicle Collisions Analysis<br /></a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/ny.jpg" alt="" /></a>
-									<code>Pandas, Matplotlib, Seaborn, Folium </code><br/><br/>
-									<p>This is my first BI project. <br> Many choices in this project are debatable. <br> This was primarily a coding exercise. <br> I used a dataset on New York accidents to build my first "real" ETL job. <br> It was also my first experience handling NaN values, <br> where I attempted to recover missing New York county data using geographic coordinates, street names, and intersections.</p>
-																		<br/>
-									<ul class="actions special">
-										<li><a href="https://github.com/FrancoisDumont30/NY_Collision" class="button">Github</a></li>
-									</ul>
-								</article>
+						<article>
+							<header>
+								<h2><a href="#"></a>Rubiks cube <br/> scramble checker</h2>
+							</header>
+							<a href="#" class="image fit"><img src="images/cube.jpg" alt=""/> </a>
+							<code>Python list and basic</code><br /><br />
+							<p>I had only been learning Python for a few months, and I was spending all my time on coding exercise platforms. <br />But solving problems just for the sake of solving them was starting to feel a bit tedious. I wanted to dive into a personal project to tackle "my own" problems.</p>
+							
+							<ul class="actions special">
+								<li><a href="https://github.com/FrancoisDumont30/Rubiks_Cube_scramble_checker" class="button">Github</a></li>
+							</ul>
+						</article>
 
-								<article>
-									<header>
-										<h2><a href="#">Exhaustive RAG<br /></a></h2>
-										
-									</header>
-									<a href="#" class="image fit"><img src="images/robot_reading.jpg"  alt=""/></a>
-									<code>Mistral LLM : Structured output, OCR, Prompting
-										<br/>Llama Index : Metadata, Reranking, Vector Storage</code><br/><br/>
-									<p>I built a comprehensive RAG system for construction contractual documents, optimizing retrieval through chapter-based chunking and metadata enhancement. <br />I also wrote an article explaining the challenges and the overall concept of my project.</p>
-									
-									<br/>
-									<ul class="actions special">
-										<li><a href="#" class="button">Github</a></li>
-									</ul>
-								</article>
+						<article>
+							<header>
+								<h2><a href="#">Power BI</a></h2>
+							
+								<br />
+							</header>
+							<a href="#" class="image fit"><img src="images/BI.jpg" alt="" /></a>
+							<code>Power BI</code><br/><br/>
+							<p>Several dashboards <br />
+								using dynamic filters, DAX langage, KPI, maps,...</p>
+							
+							<ul class="actions special">
+								<li><a href="https://github.com/FrancoisDumont30/Power_BI" class="button">Github</a></li>
+							</ul>
+						</article>
 
-								<article>
-									<header>
-										<h2><a href="#"></a>Rubiks cube <br/> scramble checker</h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/cube.jpg" alt=""/> </a>
-									<code>Python list and basic</code><br /><br />
-									<p>I had only been learning Python for a few months, and I was spending all my time on coding exercise platforms. <br />But solving problems just for the sake of solving them was starting to feel a bit tedious. I wanted to dive into a personal project to tackle "my own" problems.</p>
-									
-									<ul class="actions special">
-										<li><a href="https://github.com/FrancoisDumont30/Rubiks_Cube_scramble_checker" class="button">Github</a></li>
-									</ul>
-								</article>
-
-								<article>
-									<header>
-										<h2><a href="#">Power BI</a></h2>
-									
-										<br />
-									</header>
-									<a href="#" class="image fit"><img src="images/BI.jpg" alt="" /></a>
-									<code>Power BI</code><br/><br/>
-									<p>Several dashboards <br />
-										using dynamic filters, DAX langage, KPI, maps,...</p>
-									
-									<ul class="actions special">
-										<li><a href="https://github.com/FrancoisDumont30/Power_BI" class="button">Github</a></li>
-									</ul>
-								</article>
-
-							</section>
+						</section>
 
 
-					</div>
+				</div>
 
 
 				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+				<div id="copyright">
+					<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
 
 			</div>
 

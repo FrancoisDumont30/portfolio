@@ -7,6 +7,11 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+
+
+
+
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -28,6 +33,23 @@ section, summary, time, mark, audio, video {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
+
+
+.bandeau-logos {
+  display: flex;
+  align-items: center;      /* Alignement vertical au centre */
+  justify-content: center;  /* Centrage horizontal (ou space-between) */
+  gap: 32px;                /* Espace entre les logos */
+  flex-wrap: nowrap;        /* Force une seule ligne */
+  overflow-x: auto;         /* Évite le débordement sur petit écran */
+}
+
+.bandeau-logos img {
+  height: 96px;             /* Même hauteur pour tous les logos */
+  width: auto;              /* Conserve les proportions */
+  flex-shrink: 0;           /* Empêche l'écrasement des images */
+}
+
 
 body {
 	line-height: 1;
