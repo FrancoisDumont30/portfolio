@@ -6,6 +6,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/theme-navy.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -23,31 +24,55 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul class="links">
-						<li class="active"><a href="index.html">Projects</a></li>
+						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="skills.html">SQL &amp; Pandas</a></li>
+						<li><a href="bi.html">BI</a></li>
 						<li><a href="formation.html">Education</a></li>
+						<li><a href="projects.html">Self-learner projects</a></li>
 					</ul>
 					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/françoisdumont" class="icon brands fa-linkedin"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.linkedin.com/in/fran%C3%A7oisdumont" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 						<li><a href="https://github.com/FrancoisDumont30" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 					</ul>
 				</nav>
 
 				<!-- Main -->
 				<div id="main">
+					<!-- About -->
+					<section class="post" id="about">
+						<header class="major">
+							<h2>About me</h2>
+						</header>
+							<div class="row gtr-uniform aln-middle">
+								<div class="col-4 col-12-small about-avatar">
+									<span class="image fit"><img src="images/avatar-ring.png" alt="Portrait of François Dumont" /></span>
+									<p class="avatar-name">François Dumont</p>
+									<p class="avatar-role">Data Engineer</p>
+									<p class="avatar-skills">Python | Airflow | SQL | Docker</p>
+								</div>
+
+							<div class="col-8 col-12-small">
+								<p>I am a data engineer and a former construction project manager (about 10 years of experience in the building industry). I retrained through the Data Engineer program at Diginamic (Montpellier, 2024-2026), after discovering Python on my own in 2023.
+								<br/>I build data pipelines with Python, Airflow, SQL, Docker and cloud tools, and I like clear code and simple architectures.
+								<br/>I also worked on LLM and RAG projects at Altup Conseil.</p>
+								<p> contact : fra_dumont@hotmail.com</p>
+							</div>
+					</section>
+
 					<!-- Featured Post -->
 					<article class="post featured">
 						<header class="major">
-							<h2><a>Crypto Trading Data Pipeline<br/></a></h2>
-							<a href="#" ><img src="images/crypto.png" alt="" /></a>
+							<h2>Crypto Trading Data Pipeline<br/></h2>
+							<img src="images/crypto.png" alt="" />
 							<div class="bandeau-logos">
-								<img src="images/logo/docker.png" alt="">
-								<img src="images/logo/AirflowLogo.png" alt="">
-								<img src="images/logo/postgresql.png" alt="">
-								<img src="images/logo/fastapi.png" alt="">
-								<img src="images/logo/git.png" alt="">
+								<img src="images/logo/dark/docker.png" alt="">
+								<img src="images/logo/dark/AirflowLogo.png" alt="">
+								<img src="images/logo/dark/postgresql.png" alt="">
+								<img src="images/logo/dark/fastapi.png" alt="">
+								<img src="images/logo/dark/git.png" alt="">
 							</div>
 
-							<!-- <a><img src="images/skills_bar.png" width="594" height="129"/></a> -->
+							<!-- <img src="images/logo/dark/skills_bar.png" width="594" height="129"/> -->
 							<br/>
 							<p>
 							<b>Crypto Trading Data Pipeline </b> is a Dockerized data engineering project <br/> that collects and serves market data for cryptocurrencies. 
@@ -69,9 +94,9 @@
 					<!-- Featured Post -->
 					<article class="post featured">
 						<header class="major">
-							<h2><a>Chess games project<br/></a></h2>
-							<a href="#" ><img src="images/chess_small.png" alt="" /></a>
-							<a><img src="images/skills_bar.png" width="594" height="129"/></a>
+							<h2>Chess games project<br/></h2>
+							<img src="images/chess_small.png" alt="" />
+							<img src="images/logo/dark/skills_bar.png" width="594" height="129"/>
 							<br/>
 							<p> This <b>chess data project</b> extracts, loads, and transforms data from my Chess.com games 
 								<br/>to showcase my data engineering skills using free tools: 
@@ -87,75 +112,63 @@
 						</ul>
 					</article>
 
-					<!-- Posts -->
-					<section class="posts">
-						<article>
-							<header>
-								<h2><a href="#">New York city Motor Vehicle Collisions Analysis<br /></a></h2>
-							</header>
-							<a href="#" class="image fit"><img src="images/ny.jpg" alt="" /></a>
-							<code>Pandas, Matplotlib, Seaborn, Folium </code><br/><br/>
-							<p>This is my first BI project. <br> Many choices in this project are debatable. <br> This was primarily a coding exercise. <br> I used a dataset on New York accidents to build my first "real" ETL job. <br> It was also my first experience handling NaN values, <br> where I attempted to recover missing New York county data using geographic coordinates, street names, and intersections.</p>
-																<br/>
-							<ul class="actions special">
-								<li><a href="https://github.com/FrancoisDumont30/NY_Collision" class="button">Github</a></li>
-							</ul>
-						</article>
-
-						<article>
-							<header>
-								<h2><a href="https://github.com/FrancoisDumont30/exhaustive_RAG">Exhaustive RAG<br /></a></h2>
-								
-							</header>
-							<a href="#" class="image fit"><img src="images/robot_reading.jpg"  alt=""/></a>
-							<code>Mistral LLM : Structured output, OCR, Prompting
-								<br/>Llama Index : Metadata, Reranking, Vector Storage</code><br/><br/>
-							<p>I built a comprehensive RAG system for construction contractual documents, optimizing retrieval through chapter-based chunking and metadata enhancement. <br />I also wrote an article explaining the challenges and the overall concept of my project.</p>
-							
+					<!-- Featured Post -->
+					<article class="post featured">
+						<header class="major">
+							<h2>Google Cloud pipeline<br/>E-commerce batch</h2>
+							<img src="images/gcp_pipeline.png" width="750" style="max-width:100%;height:auto" alt="Architecture: Cloud SQL to Airflow (Cloud Composer) to BigQuery" />
 							<br/>
-							<ul class="actions special">
-								<li><a href="https://github.com/FrancoisDumont30/exhaustive_RAG" class="button">Github</a></li>
-							</ul>
-						</article>
+							<code>Google Cloud : Cloud SQL, BigQuery, Cloud Composer (Airflow), Cloud Storage, IAM | Python, SQL, pytest</code>
+							<br/><br/>
+							<p> My <b>end-of-training project</b>: a daily, incremental and replayable batch pipeline
+								<br/>that moves e-commerce data from a PostgreSQL database (Cloud SQL) to BigQuery.
+								<br/>Airflow on Cloud Composer re-reads a 7-day window and loads it with a load job and a MERGE,
+								<br/>so a replay never creates duplicates or overwrites newer data.
+								<br/>Setup is scripted with gcloud, secrets stay out of the code, and the core logic is unit tested.
+							</p>
+						</header>
+						<ul class="actions special">
+							<li><a href="https://github.com/FrancoisDumont30/gcp" class="button large">GitHub</a></li>
+						</ul>
+					</article>
 
-						<article>
-							<header>
-								<h2><a href="#"></a>Rubiks cube <br/> scramble checker</h2>
-							</header>
-							<a href="#" class="image fit"><img src="images/cube.jpg" alt=""/> </a>
-							<code>Python list and basic</code><br /><br />
-							<p>I had only been learning Python for a few months, and I was spending all my time on coding exercise platforms. <br />But solving problems just for the sake of solving them was starting to feel a bit tedious. I wanted to dive into a personal project to tackle "my own" problems.</p>
-							
-							<ul class="actions special">
-								<li><a href="https://github.com/FrancoisDumont30/Rubiks_Cube_scramble_checker" class="button">Github</a></li>
-							</ul>
-						</article>
+					<!-- Featured Post -->
+					<article class="post featured">
+						<header class="major">
+							<h2>Exhaustive RAG<br/></h2>
+							<img src="images/robot_reading.jpg" width="750" style="max-width:100%;height:auto" alt="Robot reading a book" />
+							<br/>
+							<code>Mistral LLM, Llama Index</code>
+							<br/><br/>
+							<p>A <b>RAG system</b> for construction contractual documents.
+								<br/>It combines structured output, OCR, chapter-based chunking, metadata enhancement, reranking and vector storage.
+								<br/>I also contributed a fix upstream to LlamaIndex.
+							</p>
+						</header>
+						<ul class="actions special">
+							<li><a href="https://github.com/FrancoisDumont30/exhaustive_RAG" class="button large">GitHub</a></li>
+						</ul>
+					</article>
 
-						<article>
-							<header>
-								<h2><a href="#">Power BI</a></h2>
-							
-								<br />
-							</header>
-							<a href="#" class="image fit"><img src="images/BI.jpg" alt="" /></a>
-							<code>Power BI</code><br/><br/>
-							<p>Several dashboards <br />
-								using dynamic filters, DAX langage, KPI, maps,...</p>
-							
-							<ul class="actions special">
-								<li><a href="https://github.com/FrancoisDumont30/Power_BI" class="button">Github</a></li>
-							</ul>
-						</article>
-
-						</section>
-
+					<!-- More -->
+					<section class="post" id="more">
+						<header class="major">
+							<h2>And more</h2>
+							<p>My SQL and Pandas practice, my BI work, and the projects I built on my own while learning.</p>
+						</header>
+						<ul class="actions special">
+							<li><a href="skills.html" class="button large">SQL &amp; Pandas</a></li>
+							<li><a href="bi.html" class="button large">BI</a></li>
+							<li><a href="projects.html" class="button large">Self-learner projects</a></li>
+						</ul>
+					</section>
 
 				</div>
 
 
 				<!-- Copyright -->
 				<div id="copyright">
-					<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					<ul><li>&copy; FD30</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
 				</div>
 
 			</div>

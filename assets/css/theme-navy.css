@@ -1,0 +1,351 @@
+/* Navy / teal / periwinkle theme, based on the profile card colors.
+   Loaded after main.css: it only overrides colors, no layout change. */
+
+:root {
+	--navy-900: #0b1226;
+	--navy-800: #0f172a;
+	--navy-700: #162040;
+	--navy-600: #1e406e;
+	--teal: #2dd4bf;
+	--periwinkle: #818cf8;
+	--text: #e2e8f0;
+	--muted: #94a3b8;
+	--line: rgba(129, 140, 248, 0.25);
+}
+
+body {
+	background-color: var(--navy-900);
+	color: var(--text);
+}
+
+/* Page background: the card gradient instead of the grey-brown photo */
+#wrapper > .bg,
+#wrapper > .bg.fixed {
+	background-image:
+		radial-gradient(ellipse at 20% 0%, rgba(45, 212, 191, 0.18), rgba(45, 212, 191, 0) 55%),
+		radial-gradient(ellipse at 90% 20%, rgba(129, 140, 248, 0.22), rgba(129, 140, 248, 0) 55%),
+		linear-gradient(160deg, var(--navy-800) 0%, #1b1f4b 55%, var(--navy-600) 100%) !important;
+	background-color: var(--navy-800) !important;
+}
+
+/* Text */
+body, input, select, textarea {
+	color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #ffffff;
+}
+
+strong, b {
+	color: #ffffff;
+}
+
+a {
+	color: var(--teal);
+	border-bottom-color: rgba(45, 212, 191, 0.45);
+}
+
+a:hover {
+	color: var(--periwinkle) !important;
+	border-bottom-color: transparent;
+}
+
+/* Intro (title) */
+#intro h1 {
+	color: #ffffff;
+	text-shadow: 0 4px 30px rgba(45, 212, 191, 0.35);
+}
+
+#intro h2 {
+	color: var(--teal);
+}
+
+#intro p {
+	color: var(--muted);
+}
+
+/* Navigation bar */
+#nav {
+	background-color: rgba(15, 23, 42, 0.85);
+	border-bottom: solid 2px var(--teal);
+}
+
+#nav ul.links li a {
+	color: var(--text);
+}
+
+#nav ul.links li a:hover {
+	background-color: rgba(45, 212, 191, 0.12);
+	color: var(--teal) !important;
+}
+
+#nav ul.links li.active {
+	background-color: var(--teal);
+}
+
+#nav ul.links li.active a {
+	color: var(--navy-800);
+}
+
+#nav ul.links li.active a:hover {
+	color: var(--navy-800) !important;
+}
+
+#nav ul.icons li a {
+	color: var(--text);
+}
+
+/* Main panel: dark navy instead of white */
+#main {
+	background-color: rgba(15, 23, 42, 0.92);
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+#main > * {
+	border-top: solid 2px var(--line);
+}
+
+#main > :first-child {
+	border-top: 0;
+}
+
+/* Project cards */
+#main > .posts > article {
+	border-color: var(--line);
+}
+
+#main > .posts > article:before,
+#main > .posts > article:after {
+	background-color: var(--line);
+}
+
+#main > .posts > article {
+	background-color: rgba(30, 64, 110, 0.22);
+	border-radius: 0.75rem;
+}
+
+.image,
+.image img {
+	border-radius: 0.5rem;
+}
+
+/* Buttons: teal outline, filled on hover */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+	box-shadow: inset 0 0 0 2px var(--teal);
+	color: var(--teal) !important;
+	border-radius: 0.5rem;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+	background-color: var(--teal);
+	box-shadow: inset 0 0 0 2px var(--teal);
+	color: var(--navy-800) !important;
+}
+
+/* Lines, tables, code, quotes */
+hr {
+	border-bottom-color: var(--line);
+}
+
+table tbody tr {
+	border-color: var(--line);
+}
+
+table tbody tr:nth-child(2n + 1) {
+	background-color: rgba(129, 140, 248, 0.08);
+}
+
+table thead,
+table tfoot {
+	border-color: var(--line);
+}
+
+blockquote {
+	border-left-color: var(--teal);
+}
+
+code {
+	background: rgba(129, 140, 248, 0.15);
+	border-color: var(--line);
+	color: var(--text);
+}
+
+/* Footer and mobile menu */
+#footer,
+#copyright {
+	background-color: transparent;
+	color: var(--muted);
+}
+
+#titleBar,
+#navPanel {
+	background-color: var(--navy-800);
+	color: var(--text);
+}
+
+
+/* About avatar: round portrait with text below */
+.about-avatar {
+	text-align: center;
+}
+
+.about-avatar .image,
+.about-avatar .image img {
+	border-radius: 50%;
+}
+
+.about-avatar .image {
+	max-width: 15rem;
+	margin: 0 auto 1rem auto;
+	display: block;
+}
+
+.about-avatar p {
+	margin: 0;
+	text-align: center;
+	line-height: 1.5;
+}
+
+.about-avatar .avatar-name {
+	color: #ffffff;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.about-avatar .avatar-role {
+	color: var(--teal);
+	font-size: 1rem;
+}
+
+.about-avatar .avatar-skills {
+	color: var(--muted);
+	font-size: 0.8rem;
+}
+
+/* Section titles in teal (site title in the intro stays white) */
+#main h1,
+#main h2,
+#main h3 {
+	color: var(--teal);
+}
+
+/* Tighter vertical spacing between sections */
+#main > .post {
+	padding: 4rem 6rem 3rem 6rem;
+}
+
+#main > .post header.major > h1,
+#main > .post header.major h2 {
+	margin-bottom: 1.5rem;
+}
+
+#main > .posts > * {
+	padding: 2.5rem;
+}
+
+@media screen and (max-width: 1280px) {
+	#main > .post {
+		padding: 3rem 3rem 2rem 3rem;
+	}
+}
+
+@media screen and (max-width: 736px) {
+	#main > .post {
+		padding: 2.5rem 1.5rem 1.25rem 1.5rem;
+	}
+
+	#main > .post header.major > h1,
+	#main > .post header.major h2 {
+		margin-bottom: 1rem;
+	}
+
+	#main > .posts > * {
+		padding: 1.75rem 1.5rem;
+	}
+}
+
+/* Project rows (projects.html) */
+.project-row {
+	margin-bottom: 2rem;
+}
+
+.project-row h3 {
+	margin-bottom: 0.5rem;
+}
+
+.project-row .tech {
+	margin-bottom: 0.75rem;
+}
+
+.project-row .tech code {
+	font-size: 0.8rem;
+}
+
+#main > .post > header.major > p {
+	color: var(--muted);
+}
+
+/* Skills page */
+ul.tags {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+ul.tags li {
+	padding: 0.35rem 0.8rem;
+	border: solid 1px var(--teal);
+	border-radius: 2rem;
+	font-size: 0.8rem;
+	color: var(--text);
+	background: rgba(45, 212, 191, 0.08);
+}
+
+.example h4 {
+	color: var(--periwinkle);
+	font-size: 0.9rem;
+	margin: 0 0 0.5rem 0;
+}
+
+.example h4 small {
+	color: var(--muted);
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.example pre {
+	background: #0b1226;
+	border: solid 1px var(--line);
+	border-radius: 0.5rem;
+	padding: 1rem;
+	overflow-x: auto;
+	margin: 0;
+}
+
+.example pre code {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	font-size: 0.72rem;
+	line-height: 1.5;
+	color: #e2e8f0;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.example > header.major {
+	margin-bottom: 1.5rem;
+}

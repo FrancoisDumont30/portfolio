@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>SQL and Pandas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/theme-navy.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+				<div id="intro">
+					<h1>Portfolio</h1>
+					<h2>François Dumont</h2>
+					<p>Data - ML - AI</p>
+				</div>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><a href="skills.html">SQL &amp; Pandas</a></li>
+						<li><a href="bi.html">BI</a></li>
+						<li><a href="formation.html">Education</a></li>
+						<li><a href="projects.html">Self-learner projects</a></li>
+					</ul>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/fran%C3%A7oisdumont" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/FrancoisDumont30" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+				<div id="main">
+					<section class="post" id="sql-pandas">
+						<header class="major">
+							<h2>SQL &amp; Pandas</h2>
+							<p>I practise on LeetCode to keep my data manipulation sharp: <b>105 problems solved</b>,<br/>including <b>64 in SQL (MySQL)</b> and <b>45 in Pandas</b>, 27 of them solved in both.<br/>Public profile: <a href="https://leetcode.com/u/FD30/">leetcode.com/u/FD30</a>.</p>
+						</header>
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-small">
+								<h3>SQL</h3>
+								<ul class="tags">
+									<li>Joins (inner, left, cross, self)</li><li>GROUP BY, HAVING</li><li>CTEs and subqueries</li><li>Window functions</li><li>CASE, IFNULL</li><li>UNION</li><li>Dates and patterns (LIKE, REGEXP)</li>
+								</ul>
+							</div>
+							<div class="col-6 col-12-small">
+								<h3>Pandas</h3>
+								<ul class="tags">
+									<li>merge and concat</li><li>groupby and aggregations</li><li>Filtering and sorting</li><li>Missing values (fillna)</li><li>drop_duplicates</li><li>apply</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+										<header class="major"><h2>CTEs and window functions</h2></header>
+					<section class="post example">
+						<header class="major"><h3>Human Traffic of Stadium</h3><p>Find runs of at least three consecutive days with 100 visitors or more. Hard level. I solved it in SQL with a CTE and window functions.</p></header>
+						<h4>SQL <small>(CTEs, LAG, LEAD, UNION ALL)</small></h4><pre><code>WITH cte AS (
+    SELECT 
+    LAG(id) OVER() AS a,
+    id,
+    LEAD(id) OVER() AS c,
+    visit_date,
+    people
+    FROM Stadium
+    WHERE people &gt;= 100
+),
+    filter AS (
+    SELECT 
+    *
+    FROM cte
+    WHERE a = id-1 AND c = id+1)
+, aggreg AS (
+    SELECT a AS res FROM filter
+    UNION ALL
+    SELECT id AS res FROM filter
+    UNION ALL
+    SELECT c AS res FROM filter
+)
+
+SELECT * FROM Stadium WHERE id IN (SELECT DISTINCT res FROM aggreg)</code></pre>
+					</section>
+					<section class="post example">
+						<header class="major"><h3>Trips and Users</h3><p>Hard level. Daily cancellation rate of trips between unbanned clients and drivers over three days. Solved in SQL with a CTE.</p></header>
+						<h4>SQL <small>(CTE, CASE, subqueries, AVG, GROUP BY)</small></h4><pre><code>WITH cte AS (
+    SELECT *, 
+    CASE
+        WHEN status = &#x27;completed&#x27; THEN 0
+        ELSE 1
+        END AS Cancellation
+    FROM Trips
+    WHERE client_id IN (SELECT users_id FROM Users WHERE banned=&#x27;No&#x27;)
+    AND driver_id IN (SELECT users_id FROM Users WHERE banned=&#x27;No&#x27;)
+    AND request_at &gt; &#x27;2013-09-30&#x27; AND request_at &lt; &#x27;2013-10-04&#x27;)
+SELECT request_at AS Day, ROUND(AVG(Cancellation), 2) AS `Cancellation Rate`
+FROM cte
+GROUP BY Day</code></pre>
+					</section>
+					<section class="post example">
+						<header class="major"><h3>Consecutive Numbers</h3><p>Find numbers that appear at least three times in a row, using the previous and next rows.</p></header>
+						<h4>SQL <small>(CTE, LAG, LEAD)</small></h4><pre><code>WITH
+    T AS (
+        SELECT
+            *,
+            LAG(num) OVER () AS a,
+            LEAD(num) OVER () AS b
+        FROM Logs
+    )
+SELECT DISTINCT num AS ConsecutiveNums
+FROM T
+WHERE a = num AND b = num;</code></pre>
+					</section>
+					<section class="post example">
+						<header class="major"><h3>Rank Scores</h3><p>Rank scores from highest to lowest, with no gaps between ranks.</p></header>
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-small"><h4>SQL <small>(CTE, ROW_NUMBER, window function)</small></h4><pre><code>WITH cte AS (SELECT 
+    score,
+    ROW_NUMBER() OVER (ORDER BY score DESC) AS `ranking`
+FROM Scores
+GROUP BY score)
+SELECT s.score, c.ranking as `rank`
+FROM Scores s
+JOIN cte c
+ON s.score = c.score
+ORDER BY score DESC</code></pre></div>
+							<div class="col-6 col-12-small"><h4>Pandas <small>(sort, loop on previous row)</small></h4><pre><code>import pandas as pd
+
+def order_scores(scores: pd.DataFrame) -&gt; pd.DataFrame:
+    data = scores.sort_values("score", ascending=False).reset_index(drop=True)
+    data["rank"]=1
+    data2 = data[["score", "rank"]]
+    
+    for n in range (0,data2.shape[0]):
+        if n == 0:
+            pass
+        elif data2["score"][n] == data2["score"][n-1] :
+            data2["rank"][n] = data2["rank"][n-1]
+        else :
+            data2["rank"][n] = (data2["rank"][n-1])+1
+        
+        
+    return data2</code></pre></div>
+						</div>
+					</section>
+					<header class="major"><h2>Same problem, two tools</h2></header>
+					<section class="post example">
+						<header class="major"><h3>Students and Examinations</h3><p>Count how many exams each student attended for every subject, including zero. The key is to build all student and subject pairs first, then join the exams.</p></header>
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-small"><h4>SQL <small>(CROSS JOIN, LEFT JOIN, GROUP BY)</small></h4><pre><code>SELECT 
+    Students.student_id, 
+    Students.student_name, 
+    Subjects.subject_name, 
+    COUNT(Examinations.subject_name) AS attended_exams
+
+FROM Students
+
+CROSS JOIN Subjects
+
+LEFT JOIN Examinations 
+    ON Students.student_id = Examinations.student_id 
+    AND Subjects.subject_name = Examinations.subject_name
+
+GROUP BY Students.student_id, Subjects.subject_name
+ORDER BY Students.student_id, Subjects.subject_name
+;</code></pre></div>
+							<div class="col-6 col-12-small"><h4>Pandas <small>(cross merge, groupby, fillna)</small></h4><pre><code>import pandas as pd
+
+def students_and_examinations(students: pd.DataFrame, subjects: pd.DataFrame, examinations: pd.DataFrame) -&gt; pd.DataFrame:
+
+
+    df = students.merge(subjects, how=&#x27;cross&#x27;)
+
+    exam_counts = examinations.groupby([&#x27;student_id&#x27;, &#x27;subject_name&#x27;]).size().reset_index(name=&#x27;attended_exams&#x27;)
+
+    df = df.merge(exam_counts, on=[&#x27;student_id&#x27;, &#x27;subject_name&#x27;], how=&#x27;left&#x27;)
+    df = df[[&#x27;student_id&#x27;,&#x27;student_name&#x27;,&#x27;subject_name&#x27;, &#x27;attended_exams&#x27;]]
+    df[&#x27;attended_exams&#x27;] = df[&#x27;attended_exams&#x27;].fillna(0)
+
+    return df.sort_values([&#x27;student_id&#x27;, &#x27;subject_name&#x27;])</code></pre></div>
+						</div>
+					</section>
+					<section class="post example">
+						<header class="major"><h3>Confirmation Rate</h3><p>Compute each user's share of confirmed messages, with 0 for users who never confirmed anyone.</p></header>
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-small"><h4>SQL <small>(LEFT JOIN, AVG, GROUP BY)</small></h4><pre><code>SELECT s.user_id, ROUND(AVG(IF(c.action = &#x27;confirmed&#x27;, 1,0)),2) AS confirmation_rate
+FROM Signups s
+LEFT JOIN Confirmations c
+ON s.user_id = c.user_id
+GROUP BY s.user_id</code></pre></div>
+							<div class="col-6 col-12-small"><h4>Pandas <small>(replace, groupby mean, outer merge)</small></h4><pre><code>import pandas as pd
+
+def confirmation_rate(signups: pd.DataFrame, confirmations: pd.DataFrame) -&gt; pd.DataFrame:
+    confirmations = confirmations.replace(&#x27;confirmed&#x27;, 1)
+    confirmations = confirmations.replace(&#x27;timeout&#x27;, 0)
+    confirmations = confirmations.groupby(&#x27;user_id&#x27;)[&#x27;action&#x27;].mean().round(2).reset_index(name=&#x27;confirmation_rate&#x27;)
+    
+    confirmations = confirmations.merge(signups, on=&#x27;user_id&#x27;, how=&#x27;outer&#x27;)
+    confirmations = confirmations.fillna(0)
+
+
+    return confirmations[[&#x27;user_id&#x27;,&#x27;confirmation_rate&#x27;]]</code></pre></div>
+						</div>
+					</section>
+
+				</div>
+
+
+				<!-- Copyright -->
+				<div id="copyright">
+					<ul><li>&copy; FD30</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
